@@ -20,13 +20,19 @@ class Profile extends React.Component {
     this.init(this.props.params.username);
   }
   componentWillReceiveProps(nextProps) {
+    base.removeBinding(this.ref)
     this.init(nextProps.params.username);
   }
   componentWillUnMount() {
+    base.removeBinding(this.ref)
   }
   init(username) {
-    const childRef = this.ref.child(username);
-    this.bindAsArray(childRef, 'notes');
+
+    this.ref = base.bindToState(username, { 
+      context: this,
+      asArray: true, 
+      state: 'notes'
+    });
 
     getGitHubInfo(username)
         .then(data => {
@@ -37,7 +43,9 @@ class Profile extends React.Component {
         }.bind(this))
   }
   handleAddNotes(newNote) {
-
+    base.post(this.props.params.username, { 
+      data: this.state.notes.concat([newNote])
+    })
   }
   render() {
     return(
@@ -53,7 +61,7 @@ class Profile extends React.Component {
           <Notes 
             username={this.props.params.username} 
             notes={this.state.notes}
-            addNote={this.handleAddNotes}/>
+            addNote={(newNote) => this.handleAddNotes(newNote)}/>
         </div>
       </div>
     )
