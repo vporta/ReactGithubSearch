@@ -1,0 +1,18 @@
+import axios from 'axios';
+
+function getRepos(username) {
+    return axios.get(`https://api.github.com/users/${username}/repos`);
+};
+
+function getuserinfo(username){
+  return axios.get(`https://api.github.com/users/${username}`);
+};
+
+export default function getGitHubInfo(username) {
+  return axios.all([getRepos(username), getuserinfo(username)])
+  .then(arr => ({ repos: arr[0].data, bio: arr[1].data }));
+}
+
+
+export default helpers;
+
