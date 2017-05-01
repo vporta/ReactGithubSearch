@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NotesList from './NotesList';
 import AddNote from './AddNote';
 
@@ -14,8 +13,8 @@ const Notes = ({username, notes, addNote}) => {
 }
 
 Notes.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  notes: React.PropTypes.array.isRequired,
-  addNote: React.PropTypes.func.isRequired
+  username: React.PropTypes.string,
+  notes: React.PropTypes.array,
+  addNote: React.PropTypes.func
 }
 export default Notes;

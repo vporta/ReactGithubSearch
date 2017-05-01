@@ -5,7 +5,12 @@ import UserProfile from './Github/UserProfile';
 import Notes from './Notes/Notes';
 import getGitHubInfo from '../utils/helpers.js';
 
-const base = Rebase.createClass('https://github-profile-viewer-c65a9.firebaseio.com/')
+const base = Rebase.createClass({
+      apiKey: process.env.REACTGITHUB_FIREBASE_APIKEY,
+      authDomain: "github-profile-viewer-c65a9.firebaseapp.com",
+      databaseURL: "https://github-profile-viewer-c65a9.firebaseio.com",
+      storageBucket: "github-profile-viewer-c65a9.appspot.com"
+}, 'GithubSearch')
 
 class Profile extends React.Component {
   constructor(props) {
@@ -27,7 +32,6 @@ class Profile extends React.Component {
     base.removeBinding(this.ref)
   }
   init(username) {
-
     this.ref = base.bindToState(username, { 
       context: this,
       asArray: true, 
@@ -40,7 +44,7 @@ class Profile extends React.Component {
             bio: data.bio,
             repos: data.repos
           })
-        }.bind(this))
+        })
   }
   handleAddNotes(newNote) {
     base.post(this.props.params.username, { 

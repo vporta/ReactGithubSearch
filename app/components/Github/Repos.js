@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Repos = ({repos}) => {
   return(
@@ -20,8 +19,8 @@ const Repos = ({repos}) => {
 }
 
 Repos.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  repos: React.PropTypes.array.isRequired
+  username: React.PropTypes.string,
+  repos: React.PropTypes.array
 }
 
 export default Repos;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class AddNote extends React.Component {
   setRef(ref) {
@@ -23,7 +22,7 @@ class AddNote extends React.Component {
 }
 
 AddNote.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  addNote: React.PropTypes.func.isRequired
+  username: React.PropTypes.string,
+  addNote: React.PropTypes.func
 }
 export default AddNote;

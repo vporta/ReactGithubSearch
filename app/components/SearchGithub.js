@@ -1,6 +1,5 @@
 import React from 'react';
 import Router from 'react-router';
-import PropTypes from 'prop-types';
 
 class SearchGithub extends React.Component {
   getRef(ref) {
@@ -26,7 +25,7 @@ class SearchGithub extends React.Component {
     )
   }
 }
-SearchGithub.PropTypes = {
-  history: React.PropTypes.object.isRequired
+SearchGithub.propTypes = {
+  history: React.PropTypes.object
 }
 export default SearchGithub;

@@ -14,5 +14,4 @@ export default function getGitHubInfo(username) {
 }
 
 
-export default helpers;
 
